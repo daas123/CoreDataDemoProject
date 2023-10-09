@@ -11,4 +11,5 @@ struct UserModel{
     let lName : String
     let address : String
     let contactNo : String
+    let image : String
 }

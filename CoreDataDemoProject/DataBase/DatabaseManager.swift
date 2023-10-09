@@ -19,6 +19,7 @@ class DataBaseManager{
         employee.lName = user.lName
         employee.address = user.address
         employee.contactNo = user.contactNo
+        employee.imageName = user.image
         do{
             try context.save()
         }catch{
@@ -56,6 +57,7 @@ class DataBaseManager{
             employeeToEdit.lName = user.lName
             employeeToEdit.address = user.address
             employeeToEdit.contactNo = user.contactNo
+            employeeToEdit.imageName = user.image
             try context.save()
             completion("")
         }catch{

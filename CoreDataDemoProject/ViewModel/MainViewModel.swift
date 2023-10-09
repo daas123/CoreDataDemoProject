@@ -14,7 +14,7 @@ protocol EditData{
 }
 
 class MainViewModel{
-    var FetchedData : [Employee]?
+    static var FetchedData : [Employee]?
     
     func sendDataToDataBase(user : UserModel ,complition:@escaping (String)->Void){
         Validation().userDataFiledValidation(user : user){
@@ -36,7 +36,7 @@ class MainViewModel{
         DataBaseManager().fetchData(){
             (bool,data) in
             if bool{
-                self.FetchedData = data
+                MainViewModel.FetchedData = data
                 complition("")
             }else{
                 print("some thing went wrong")
@@ -46,6 +46,11 @@ class MainViewModel{
     }
     
     func editData(index:Int, user:UserModel , complition:@escaping(String)->Void ){
+        
+        guard self.deleteImageByIndex(index: index) else{
+            complition("Some Thing wentWrong")
+            return
+        }
         Validation().userDataFiledValidation(user : user){
             str in
             if str.isEmpty{
@@ -63,6 +68,12 @@ class MainViewModel{
         }
     }
     func DeletData(index: Int ,complition:@escaping(String)->Void){
+        
+        guard self.deleteImageByIndex(index: index) else{
+            complition("Some Thing wentWrong")
+            return
+        }
+
         DataBaseManager().deleteData(index: index){
             res in
             if res.isEmpty{
@@ -71,6 +82,19 @@ class MainViewModel{
                 complition("Some Thing went Wrong")
             }
         }
+    }
+    
+    func deleteImageByIndex(index:Int) -> Bool{
+        let fileManager = FileManager.default
+        let fileName = MainViewModel.FetchedData?[index].imageName ?? ""
+        let imageurl = URL.documentsDirectory.appendingPathComponent(fileName).appendingPathExtension("png")
+        do {
+            try fileManager.removeItem(at: imageurl)
+            return true
+        } catch {
+            return false
+        }
+        
     }
     
 }

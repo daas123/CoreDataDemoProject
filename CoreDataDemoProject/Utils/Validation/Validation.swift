@@ -28,6 +28,11 @@ class Validation{
             complition("Enter the Contact No")
             return
         }
+        
+        guard let userimage = user?.image , !userimage.isEmpty else{
+            complition("Select the image")
+            return
+        }
         complition("")
     }
 }

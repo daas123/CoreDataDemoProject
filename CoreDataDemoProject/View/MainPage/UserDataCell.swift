@@ -17,6 +17,7 @@ class UserDataCell: UITableViewCell {
     @IBOutlet weak var lblLname: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblContactNo: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -20,7 +20,7 @@ extension Employee {
     @NSManaged public var fName: String?
     @NSManaged public var lName: String?
     @NSManaged public var contactNo: String?
-
+    @NSManaged public var imageName: String?
 }
 
 extension Employee : Identifiable {

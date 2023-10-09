@@ -4,6 +4,7 @@
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="contactNo" optional="YES" attributeType="String"/>
         <attribute name="fName" optional="YES" attributeType="String"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
         <attribute name="lName" optional="YES" attributeType="String"/>
     </entity>
 </model>
